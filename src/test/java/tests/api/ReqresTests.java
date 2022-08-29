@@ -1,5 +1,4 @@
-package tests;
-
+package tests.api;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
@@ -9,9 +8,9 @@ import static org.hamcrest.Matchers.*;
 
 public class ReqresTests {
 
-    String userUrl = "/api/users/2",
-            regUrl = "/api/register",
-            notFoundUrl = "/api/unknown/23";
+    String userUrl = "/users/2",
+            regUrl = "/register",
+            notFoundUrl = "/unknown/23";
 
     @BeforeEach
     void testSetUp(){
@@ -33,6 +32,7 @@ public class ReqresTests {
                 .body("data.first_name", is(name))
                 .body("data.last_name", is(lastName));
     }
+
 
     @Test
     void updateUser(){
@@ -82,4 +82,5 @@ public class ReqresTests {
                 .statusCode(404);
 
     }
+
 }
